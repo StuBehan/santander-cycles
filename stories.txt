@@ -1,0 +1,13 @@
+objects                 messages
+
+user                      use_bike
+
+bike                      is_working
+
+docking_station          release_bike
+
+
+
+user > release_bike > docking_station
+
+user > is_working? > bike
