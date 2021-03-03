@@ -6,11 +6,13 @@ class DockingStation
   end
 
   def release_bike
-    return Bike.new
+    raise "No bikes available" unless @bike
+    @bike
   end
 
   def receive_bike(bike)
-    return bike
+    @bike = bike
+    return @bike
   end
 
 end

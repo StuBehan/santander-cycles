@@ -14,6 +14,10 @@ describe DockingStation do
   it "receives a bike object" do
     expect(subject.receive_bike(bike)).to be_an_instance_of(Bike)
   end
+
+  it "releases a bike object" do
+    expect { subject.release_bike }.to raise_error("No bikes available")
+  end
 end
 
 describe Bike do
