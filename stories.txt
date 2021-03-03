@@ -11,3 +11,10 @@ docking_station          release_bike
 user > release_bike > docking_station
 
 user > is_working? > bike
+
+
+chap 11
+
+user > Bike.to_dock > docking_station
+
+user > has_bike? > docking_station
