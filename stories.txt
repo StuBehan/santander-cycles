@@ -18,3 +18,9 @@ chap 11
 user > docking_station.receive_bike(Bike) > docking_station
 
 user > has_bike? > docking_station
+
+user > is_there_bike? > docking_station
+
+chapter 13
+
+user > bikes_full > docking_station

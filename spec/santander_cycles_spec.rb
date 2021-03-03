@@ -6,6 +6,7 @@ describe DockingStation do
   it { is_expected.to respond_to(:release_bike) }
 
   it "returns the Bike Class" do
+    20.times { subject.receive_bike(bike) }
     expect(subject.release_bike).to be_an_instance_of(Bike)
   end
   
@@ -19,9 +20,15 @@ describe DockingStation do
     expect { subject.release_bike }.to raise_error("No bikes available")
   end
 
-  it "checks space available to receive bike" do
-    expect { subject.receive_bike(bike) }.to raise_error("No space available")
+  # it "checks space available to receive bike" do
+  #   expect { subject.receive_bike(bike) }.to raise_error("No space available")
+  # end
+
+  it "raises an error when full" do
+    20.times { subject.receive_bike(bike) }
+      expect { subject.receive_bike(bike) }.to raise_error("Docking station full")
   end
+
 end
 
 describe Bike do
