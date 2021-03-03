@@ -18,6 +18,10 @@ describe DockingStation do
   it "releases a bike object" do
     expect { subject.release_bike }.to raise_error("No bikes available")
   end
+
+  it "checks space available to receive bike" do
+    expect { subject.receive_bike(bike) }.to raise_error("No space available")
+  end
 end
 
 describe Bike do

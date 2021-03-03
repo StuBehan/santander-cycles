@@ -11,6 +11,7 @@ class DockingStation
   end
 
   def receive_bike(bike)
+    raise "No space available" if @bike
     @bike = bike
     return @bike
   end
