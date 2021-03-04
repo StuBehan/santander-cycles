@@ -15,7 +15,7 @@ describe DockingStation do
 
   describe 'release_bike' do
     it "returns the Bike Class" do
-      DockingStation::DEFAULT_CAPACITY.times { subject.receive_bike(bike) }
+      subject.capacity.times { subject.receive_bike(bike) }
       expect(subject.release_bike).to be_an_instance_of(Bike)
     end
   
@@ -41,7 +41,7 @@ describe DockingStation do
     # Challenge 13
     # Challenge 14
     it "raises an error when full" do
-      DockingStation::DEFAULT_CAPACITY.times { subject.receive_bike(bike) }
+      subject.capacity.times { subject.receive_bike(bike) }
       expect { subject.receive_bike(bike) }.to raise_error("Docking station full")
     end
   end
@@ -58,5 +58,17 @@ describe DockingStation do
     it "returns true if the docking station is empty" do
       expect(subject.empty?).to eql(true)
     end    
+  end
+  
+  # Challenge 17
+  describe 'initialize' do
+    subject { DockingStation.new }
+    let(:bike) {Bike.new}
+    it "sets default capactity when none entered" do
+      described_class::DEFAULT_CAPACITY.times do
+        subject.receive_bike(bike)
+      end
+      expect{ subject.receive_bike(bike) }.to raise_error("Docking station full")
+    end
   end
 end
