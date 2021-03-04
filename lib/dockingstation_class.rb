@@ -11,17 +11,16 @@ class DockingStation
   end
 
   def receive_bike(bike)
-    raise "Docking station full" if @bikes.length == 20
+    raise "Docking station full" if full?
     @bikes << bike
     return @bikes.last
   end
+  
+  def full?
+    @bikes.length >= 20
+  end
 
-end
-
-class Bike 
-  def working?
-    return true
+  def empty?
+    @bikes.length == 0
   end
 end
-
-docking_station = DockingStation.new
